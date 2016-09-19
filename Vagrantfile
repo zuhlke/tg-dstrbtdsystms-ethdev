@@ -25,7 +25,7 @@ EOF
 
 # Install Truffle
 Truffle=<<EOF
-  npm install -g truffle
+  npm install -g truffle ethereumjs-testrpc
 EOF
 
 # Install latest Ethereum dev-kit
@@ -35,8 +35,7 @@ Ethereum=<<EOF
   add-apt-repository -y ppa:ethereum/ethereum
   add-apt-repository -y ppa:ethereum/ethereum-dev
   apt-get -y update
-  apt-get -y remove libethereum
-  apt-get -y install alethzero mix-ide cpp-ethereum
+  apt-get -y install cpp-ethereum geth
 EOF
 
 # Install latest Java JDK
