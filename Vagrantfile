@@ -28,6 +28,17 @@ Truffle=<<EOF
   npm install -g truffle
 EOF
 
+# Install latest Ethereum dev-kit
+Ethereum=<<EOF
+  apt-get -y install software-properties-common
+  add-apt-repository -y ppa:ethereum/ethereum-qt
+  add-apt-repository -y ppa:ethereum/ethereum
+  add-apt-repository -y ppa:ethereum/ethereum-dev
+  apt-get -y update
+  apt-get -y remove libethereum
+  apt-get -y install alethzero mix-ide cpp-ethereum
+EOF
+
 # Install latest Java JDK
 JavaJDK=<<EOF
   if [ ! -f jdk-8u102-linux-x64.rpm ]
@@ -127,6 +138,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: BaseBox
   config.vm.provision "shell", inline: Node
   config.vm.provision "shell", inline: Truffle
+  config.vm.provision "shell", inline: Ethereum
 
   config.vm.provision "shell", inline: <<-SHELL
     # Echo the IP configuration
