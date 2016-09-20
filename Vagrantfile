@@ -28,6 +28,11 @@ Truffle=<<EOF
   npm install -g truffle ethereumjs-testrpc
 EOF
 
+# Install Dapple
+Truffle=<<EOF
+  npm install -g solc dapple
+EOF
+
 # Install latest Ethereum dev-kit
 Ethereum=<<EOF
   apt-get -y install software-properties-common
@@ -136,8 +141,9 @@ Vagrant.configure("2") do |config|
   # Install Ethereal development environment components
   config.vm.provision "shell", inline: BaseBox
   config.vm.provision "shell", inline: Node
-  config.vm.provision "shell", inline: Truffle
   config.vm.provision "shell", inline: Ethereum
+  config.vm.provision "shell", inline: Truffle
+  config.vm.provision "shell", inline: Dapple
 
   config.vm.provision "shell", inline: <<-SHELL
     # Echo the IP configuration
